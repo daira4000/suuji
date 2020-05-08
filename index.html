@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        タヌちゃんの数字当てクイズ
+    </h1>
+
+    <div>
+        <input type="button" value="スタート！" onclick="start()" />
+        タヌちゃんが想像してる数字を当ててみてね！
+    </div>
+
+    <div>
+        <input type="text" id="kaitou" />
+        <input type="button" value="これだ！" onclick="koreda()" />
+    </div>
+    <div>
+        <img src="start.jpg" height="200px" width="200px" id="tanukikao">
+    </div>
+    <div id="答えあわせ">
+    </div>
+    <script>
+        var タヌちゃん予想数字;
+        
+        function start() {
+            var 最初にもどる;
+            最初にもどる = document.getElementById("tanukikao");
+            最初にもどる.src = "start.jpg";
+            タヌちゃん予想数字 = Math.ceil(Math.random() * 30);
+            var 一つだけ表示;
+            一つだけ表示 = document.getElementById("答えあわせ");
+            一つだけ表示.innerHTML = ("");
+        }
+        function koreda() {
+            var ちぇむ答え;
+            var タヌちゃん画像;
+            var 答えあわせ;
+            答えあわせ = document.getElementById("答えあわせ")
+            タヌちゃん画像 = document.getElementById("tanukikao");
+            ちぇむ答え = document.getElementById("kaitou");
+            if (ちぇむ答え.value > タヌちゃん予想数字) {
+                タヌちゃん画像.src = "big.jpg";
+                答えあわせ.innerHTML+=(ちぇむ答え.value + "はちょっとおおすぎだよー<br>");
+            };
+            if (ちぇむ答え.value < タヌちゃん予想数字) {
+                タヌちゃん画像.src = "small.jpg";
+                答えあわせ.innerHTML+=(ちぇむ答え.value + "はすくなすぎー！ﾝﾋｰ!<br>");
+            };
+            if (ちぇむ答え.value == タヌちゃん予想数字) {
+                タヌちゃん画像.src = "win.jpg";
+                答えあわせ.innerHTML+=("ﾃﾃｰﾝ!あたりでしゅ!!<br>");
+            };
+        }
+    </script>
+</body>
+
+</html>
